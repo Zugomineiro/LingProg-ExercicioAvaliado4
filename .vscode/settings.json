@@ -1,0 +1,5 @@
+{
+    "C_Cpp.default.compilerPath": "c:\\msys64\\mingw64\\bin\\g++.exe",
+    "terminal.integrated.inheritEnv": true,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt"
+}
