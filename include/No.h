@@ -1,12 +1,16 @@
 #ifndef NO_H
 #define NO_H
 
+/**
+ * 
+ * @brief Struct com template que serve pra representar um nó binário de árvore.
+ * 
+ */
 template <class T>
-class No{
-    public:
-        T conteudo;
-        No<T>* pFilhoEsquerdo;
-        No<T>* pFilhoDireito;
-        
+struct No{
+    T conteudo;
+    No<T>* pFilhoEsquerdo = NULL;
+    No<T>* pFilhoDireito = NULL;
 };
+
 #endif
