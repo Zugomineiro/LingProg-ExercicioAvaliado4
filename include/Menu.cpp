@@ -15,7 +15,16 @@ void Menu::executaOpcao(){
 
 
         if (opcaoEscolhida == "1"){
+            frota.inserirVeiculo();
             break;
+        }
+        else if(opcaoEscolhida == "2"){
+            frota.imprimirVeiculos();
+            break;
+        }
+        else if(opcaoEscolhida == "6"){
+            usuarioSaiu = true;
+            return;
         }
        
         else{
@@ -31,15 +40,9 @@ void Menu::executaOpcao(){
 
 void Menu::imprimirMenu(){
     std::cout << "________________ Escolha uma opcao ________________" << std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "1 - Adicionar Biblioteca" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "2 - Registrar novo livro" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "3 - Inserir livro no acervo" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "4 - Mostrar Biblioteca" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "5 - Remover livro no acervo" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "6 - Pesquisar livros por autor" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "7 - Atualizar avaliacao de um livro" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "8 - Comparar bibliotecas" << "|"<< std::endl;
-    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "9 - Sair" << "|"<< std::endl;
+    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "1 - Inserir veiculo" << "|"<< std::endl;
+    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "2 - Mostrar Veiculos" << "|"<< std::endl;
+    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "6 - Sair" << "|"<< std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
 
 }

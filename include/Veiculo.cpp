@@ -8,6 +8,8 @@ void Veiculo::mostrarInformacoes(std::ostream& out) const{
     out << "Custo de Manutencao: " << custoManutencao << " R$" << std::endl; 
 }
 
+Veiculo::Veiculo(){}
+
 double Veiculo::calcularCustoManutencao() const{
     //Temporario
     return 0.25*quilometragem;
@@ -35,4 +37,25 @@ std::string Veiculo::getPlaca() const {return placa;}
 std::ostream& operator<<(std::ostream& out, Veiculo& veiculo){
     veiculo.mostrarInformacoes(out);
     return out;
+}
+
+bool Veiculo::operator>(Veiculo& veiculo){
+    if (placa > veiculo.getPlaca()){
+        return true;
+    }
+    return false;
+}
+
+bool Veiculo::operator<(Veiculo& veiculo){
+    if (placa < veiculo.getPlaca()){
+        return true;
+    }
+    return false;
+}
+
+bool Veiculo::operator==(Veiculo& veiculo){
+    if (placa == veiculo.getPlaca()){
+        return true;
+    }
+    return false;
 }

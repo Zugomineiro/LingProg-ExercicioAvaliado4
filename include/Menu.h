@@ -4,6 +4,8 @@
 #include <iomanip>
 #include <iostream>
 #include <exception>
+#include "Veiculo.h"
+#include "Frota.h"
 
 /**
  * 
@@ -15,8 +17,6 @@ class Menu{
         void imprimirMenu(); // Imprime o menu
         void executaOpcao(); // Responsavel por executar acao escolhida pelo usuario
         bool usuarioQuerSair(); // Método get para saber se o usuario quer terminar o programa
-        ~Menu();
-        Menu();
     
     private:
         static const int larguraMenu = 51; // Largura do menu em caracteres
@@ -27,7 +27,7 @@ class Menu{
         
 
         // Atributos de dados principais do programa
-        
+        Frota frota;
         
 };
 

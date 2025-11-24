@@ -10,7 +10,7 @@ class Arvore{
     ~Arvore(){
 
     }
-    Arvore<T>& operator+(T conteudo){
+    Arvore<T>& operator+(T conteudo){ // Cria um nó copiando o conteúdo e adicona na árvore.
         No<T>* pNoNovo = new No<T>;
         pNoNovo->conteudo = conteudo;
         if (quantidadeNos == 0){

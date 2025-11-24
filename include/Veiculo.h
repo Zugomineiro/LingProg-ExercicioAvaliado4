@@ -7,6 +7,7 @@
 class Veiculo{
     public:
         Veiculo(std::string placa,std::string marca);
+        Veiculo();
         virtual void mostrarInformacoes(std::ostream& out = std::cout) const;
         virtual double calcularCustoManutencao() const;
         double getQuilometragem() const;
@@ -15,6 +16,9 @@ class Veiculo{
         std::string getMarca() const;
         void setCustoManutencao(double custoManutencao);
         void setQuilometragem(double quilometragem);
+        bool operator>(Veiculo& veiculo);
+        bool operator<(Veiculo& veiculo);
+        bool operator==(Veiculo& veiculo);
     private:
         std::string placa;
         std::string marca;
