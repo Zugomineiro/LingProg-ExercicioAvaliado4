@@ -16,6 +16,7 @@ class Arvore{
         if (quantidadeNos == 0){
             // Caso seja a primeira adição, inicializa o ponteiro de raiz com o nó adicionado, isso garante que pNoRaiz passou pelo construtor de No
             pNoRaiz = pNoNovo;
+            quantidadeNos++;
         }
         else{
             adicionarNo(pNoNovo,pNoRaiz);
@@ -23,10 +24,8 @@ class Arvore{
         return *this;
     }
 
-    void adicionarNo(No<T>* noNovo,No<T>* noRaizAtual){
-        std::cout << noNovo->pFilhoDireito << " " << noNovo->pFilhoEsquerdo << std::endl;
+    void adicionarNo(No<T>* noNovo,No<T>* noRaizAtual){ // Percorre de forma recursiva a arvore e adiciona o No assim que encontrar a posição adequada
         if (noNovo->conteudo > noRaizAtual->conteudo){
-            std::cout << "maior";
             if (noRaizAtual->pFilhoEsquerdo != NULL){
                 adicionarNo(noNovo,noRaizAtual->pFilhoEsquerdo);
             }
@@ -36,25 +35,34 @@ class Arvore{
             }
         }
         else if(noNovo->conteudo < noRaizAtual->conteudo){
-            std::cout << "menor";
             if (noRaizAtual->pFilhoDireito != NULL){
                 adicionarNo(noNovo,noRaizAtual->pFilhoDireito);
             }
             else{
-                std::cout << " adicionado" << std::endl;
                 noRaizAtual->pFilhoDireito = noNovo;
                 quantidadeNos++;
             }
         }
         else{
-            std::cout << "igual";
             // Se entrou aqui quer dizer que o conteudo do nó inserido é igual a de um nó existente na arvore, não modifica a arvore
             return;
         }
     }
 
-    void mostrarInformacoes(std::ostream& out = std::cout){
-        out << pNoRaiz->conteudo <<std::endl;
+    
+    void printPercussoPrefixo(No<T>* pNoAtual){ // Faz o print de todos os elementos da arvore usando percurso prefixo (print -> filho esquerdo -> filho direito)
+        std::cout << pNoAtual->conteudo << std::endl;
+        if (pNoAtual->pFilhoEsquerdo != NULL){
+            printPercussoPrefixo(pNoAtual->pFilhoEsquerdo);
+        }
+        if (pNoAtual-> pFilhoDireito != NULL){
+            printPercussoPrefixo(pNoAtual->pFilhoDireito);
+        }
+
+    }
+
+    void mostrarInformacoes(){
+        printPercussoPrefixo(pNoRaiz);
     }
 
     private:
@@ -65,8 +73,8 @@ class Arvore{
 
 template <class T>
 std::ostream& operator<<(std::ostream& out, Arvore<T>& arvore){
-    arvore.mostrarInformacoes(out);
-    return out;
+    arvore.mostrarInformacoes();
+    return std::cout;
 };
 
 #endif

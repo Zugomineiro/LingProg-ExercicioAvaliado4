@@ -7,8 +7,11 @@
 
 
 int main(){
-    Arvore<int> arvore;
-    arvore + 2;
+    Arvore<char> arvore;
+    arvore + 'g';
+    arvore + 'm';
+    arvore + 'c';
+    arvore + 'i';
     std::cout << arvore;
 
     return 0;
