@@ -3,6 +3,7 @@
 Caminhao::Caminhao(std::string placa,std::string marca,double capacidadeCarga):Veiculo(placa,marca),capacidadeCarga(capacidadeCarga){}
 
 void Caminhao::mostrarInformacoes(std::ostream& out) const{
+    out << "tipo: Caminhao" << std::endl;
     Veiculo::mostrarInformacoes();
     out << "Capacidade de Carga: " << capacidadeCarga << " toneladas" << std::endl;
 }

@@ -4,6 +4,7 @@ Carro::Carro(std::string placa, std::string marca, size_t numeroPortas):Veiculo(
 }
 
 void Carro::mostrarInformacoes(std::ostream& out) const{
+    out << "tipo: Carro" << std::endl;
     Veiculo::mostrarInformacoes();
     out << "Numero de Portas: " << numeroPortas << std::endl;
 }

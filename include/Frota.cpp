@@ -30,7 +30,7 @@ void Frota::inserirVeiculo(){
             std::cout << std::endl;
             
             // Adiciona veiculo na arvore
-            Carro carro(placa,marca,numeroPortas);
+            Carro& carro = *(new Carro(placa,marca,numeroPortas)); // Delete é feito na classe Arvore
             arvore = arvore + carro;
             break;
         }
@@ -42,7 +42,7 @@ void Frota::inserirVeiculo(){
             std::cout << std::endl;
             
             // Adiciona veiculo na arvore
-            Caminhao caminhao(placa,marca,capacidadeCarga);
+            Caminhao& caminhao = *(new Caminhao(placa,marca,capacidadeCarga)); // Delete é feito na classe Arvore
             arvore = arvore + caminhao;
             break;
 
@@ -55,7 +55,7 @@ void Frota::inserirVeiculo(){
             std::cout << std::endl;
             
             // Adiciona veiculo na arvore
-            Moto moto(placa,marca,cilindradas);
+            Moto& moto = *(new Moto(placa,marca,cilindradas)); // Delete é feito na classe Arvore
             arvore = arvore + moto;
             break;
 

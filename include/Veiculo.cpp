@@ -11,7 +11,6 @@ void Veiculo::mostrarInformacoes(std::ostream& out) const{
 Veiculo::Veiculo(){}
 
 double Veiculo::calcularCustoManutencao() const{
-    //Temporario
     return 0.25*quilometragem;
 }
 

@@ -10,9 +10,9 @@ class Arvore{
     ~Arvore(){
 
     }
-    Arvore<T>& operator+(T conteudo){ // Cria um nó copiando o conteúdo e adicona na árvore.
+    Arvore<T>& operator+(T& conteudo){ // Cria um nó copiando o conteúdo e adicona na árvore.
         No<T>* pNoNovo = new No<T>;
-        pNoNovo->conteudo = conteudo;
+        pNoNovo->conteudo = &conteudo;
         if (quantidadeNos == 0){
             // Caso seja a primeira adição, inicializa o ponteiro de raiz com o nó adicionado, isso garante que pNoRaiz passou pelo construtor de No
             pNoRaiz = pNoNovo;
@@ -25,7 +25,7 @@ class Arvore{
     }
 
     void adicionarNo(No<T>* noNovo,No<T>* noRaizAtual){ // Percorre de forma recursiva a arvore e adiciona o No assim que encontrar a posição adequada
-        if (noNovo->conteudo > noRaizAtual->conteudo){
+        if (*(noNovo->conteudo) > *(noRaizAtual->conteudo)){
             if (noRaizAtual->pFilhoEsquerdo != NULL){
                 adicionarNo(noNovo,noRaizAtual->pFilhoEsquerdo);
             }
@@ -34,7 +34,7 @@ class Arvore{
                 quantidadeNos++;
             }
         }
-        else if(noNovo->conteudo < noRaizAtual->conteudo){
+        else if(*(noNovo->conteudo) < *(noRaizAtual->conteudo)){
             if (noRaizAtual->pFilhoDireito != NULL){
                 adicionarNo(noNovo,noRaizAtual->pFilhoDireito);
             }
@@ -51,7 +51,7 @@ class Arvore{
 
     
     void printPercussoPrefixo(No<T>* pNoAtual){ // Faz o print de todos os elementos da arvore usando percurso prefixo (print -> filho esquerdo -> filho direito)
-        std::cout << pNoAtual->conteudo << std::endl;
+        std::cout << *(pNoAtual->conteudo) << std::endl;
         if (pNoAtual->pFilhoEsquerdo != NULL){
             printPercussoPrefixo(pNoAtual->pFilhoEsquerdo);
         }
@@ -62,6 +62,11 @@ class Arvore{
     }
 
     void mostrarInformacoes(){
+        if (quantidadeNos == 0){
+            std::cout << "Nao há itens para serem mostrados." << std::endl;
+            return;
+        }
+        std::cout << "Mostrando " << quantidadeNos << " itens:" << std::endl << std::endl;
         printPercussoPrefixo(pNoRaiz);
     }
 
