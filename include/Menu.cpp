@@ -26,6 +26,10 @@ void Menu::executaOpcao(){
             frota.buscarVeiculo();
             break;
         }
+        else if(opcaoEscolhida == "4"){
+            frota.atualizarQuilometragem();
+            break;
+        }
         else if(opcaoEscolhida == "6"){
             usuarioSaiu = true;
             return;
@@ -47,6 +51,7 @@ void Menu::imprimirMenu(){
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "1 - Inserir veiculo" << "|"<< std::endl;
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "2 - Mostrar Veiculos" << "|"<< std::endl;
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "3 - Buscar Veiculo" << "|"<< std::endl;
+    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "4 - Atualizar Quilometragem" << "|"<< std::endl;
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "6 - Sair" << "|"<< std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
 

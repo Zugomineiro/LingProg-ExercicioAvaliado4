@@ -80,3 +80,21 @@ void Frota::buscarVeiculo(){
 void Frota::imprimirVeiculos(){
     std::cout << arvore << std::endl;
 }
+
+void Frota::atualizarQuilometragem(){
+    std::string placaProcurada;
+    double quilometragemDesejada;
+    std::cout << "Digite a placa do veiculo desejado: ";
+    std::cin >> placaProcurada;
+    std::cout << std::endl;
+
+    std::cout << "Digite a quilometragem desejada: ";
+    std::cin >> quilometragemDesejada;
+    std::cout << std::endl;
+
+    Veiculo* pVeiculo = arvore(placaProcurada,quilometragemDesejada);
+    if (pVeiculo == NULL){
+        throw VeiculoNaoEncontrado();
+    }
+    std::cout << "Veiculo encontrado:" << std::endl << std::endl<< *pVeiculo;
+}

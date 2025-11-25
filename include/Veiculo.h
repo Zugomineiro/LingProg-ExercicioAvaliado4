@@ -22,6 +22,7 @@ class Veiculo{
         bool operator>(std::string placa);
         bool operator<(std::string placa);
         bool operator==(std::string placa);
+        void operator()(double quilometragem);
     private:
         std::string placa;
         std::string marca;

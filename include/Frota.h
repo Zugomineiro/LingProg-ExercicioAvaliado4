@@ -13,6 +13,7 @@ class Frota{
         void inserirVeiculo();
         void buscarVeiculo();
         void imprimirVeiculos();
+        void atualizarQuilometragem();
     private:
         Arvore<Veiculo> arvore;
 };

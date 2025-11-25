@@ -79,3 +79,8 @@ bool Veiculo::operator==(std::string placa){
     }
     return false;
 }
+
+void Veiculo::operator()(double quilometragem){
+    setQuilometragem(quilometragem);
+    setCustoManutencao(calcularCustoManutencao());
+}

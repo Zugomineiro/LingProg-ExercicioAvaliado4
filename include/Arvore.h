@@ -78,7 +78,7 @@ class Arvore{
             }
             else{
                 // Se entrou aqui, quer dizer que não há próximo nó para percorrer e o veiculo não foi encontrado
-                throw VeiculoNaoEncontrado();
+                throw VeiculoNaoEncontrado(); //OBS: para uma classe mais geral a exceção "VeiculoNaoEncontrado" não é genérica, mas foi escolhida pois é exigida no exercício.
             }
         }
         else if(*(noRaizAtual->conteudo) > atributo){
@@ -98,6 +98,18 @@ class Arvore{
     
     T* operator()(std::string& atributo){
         return buscaBinaria(atributo,pNoRaiz);
+    }
+
+    T* operator()(std::string& atributoBusca,double atributoAtualizacao){
+        T* ponteiroConteudo;
+        try{
+            ponteiroConteudo = operator()(atributoBusca);
+            (*ponteiroConteudo)(atributoAtualizacao); // Chama o metodo de operator() com o argumento double atributoAtualizacao, a implementação fica a cargo de quem for implementar a função template 
+        }
+        catch(VeiculoNaoEncontrado& erro){
+            ponteiroConteudo = NULL;
+        }
+        return ponteiroConteudo;
     }
 
     private:
