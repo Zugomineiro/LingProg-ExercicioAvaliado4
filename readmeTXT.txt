@@ -1,4 +1,3 @@
-# LingProg-ExercicioAvaliado4
 Esse texto tem como objetivo explicar a compilação e a utilização do programa do exercício avaliado 4
 
 - Compilação:
