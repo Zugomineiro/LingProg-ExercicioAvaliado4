@@ -11,3 +11,5 @@ void Moto::mostrarInformacoes(std::ostream& out) const{
 double Moto::calcularCustoManutencao() const{
     return (0.000125*cilindradas + 0.03)*getQuilometragem();
 }
+
+std::string Moto::getTipo(){return "Moto";}

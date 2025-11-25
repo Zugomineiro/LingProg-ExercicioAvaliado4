@@ -98,3 +98,85 @@ void Frota::atualizarQuilometragem(){
     }
     std::cout << "Veiculo encontrado:" << std::endl << std::endl<< *pVeiculo;
 }
+
+void Frota::calculaCustoManutencao(){
+    custoMedioCaminhao = 0;
+    custoMedioCarro = 0;
+    custoMedioMoto = 0;
+
+    quantidadeCaminhao = 0;
+    quantidadeCarro = 0;
+    quantidadeMoto = 0;
+
+    No<Veiculo>& noRaiz = arvore.getNoRaiz();
+    percussoPrefixoCustoManutencao(noRaiz);
+
+    if (quantidadeCaminhao == 0){
+        quantidadeCaminhao = 1; // Para fazer a divisao
+    }
+    if (quantidadeCarro == 0){
+    quantidadeCarro = 1; // Para fazer a divisao
+    }
+    if (quantidadeMoto == 0){
+    quantidadeMoto = 1; // Para fazer a divisao
+    }
+
+    std::cout << "--- Custos de manutencao ---" << std::endl;
+    std::cout << "Carro: " << custoMedioCarro/quantidadeCarro << " R$" << std::endl;
+    std::cout << "Caminhao: " << custoMedioCaminhao/quantidadeCaminhao << " R$"<< std::endl;
+    std::cout << "Moto: " << custoMedioMoto/quantidadeMoto << " R$"<< std::endl;
+    std::cout << "----------------------------" << std::endl;
+
+}
+
+void Frota::percussoPrefixoCustoManutencao(No<Veiculo>& noAtual){
+    // Realiza ação (acumula custo manutenção na variável do tipo respectivo)
+    if(noAtual.conteudo->getTipo() == "Carro"){
+        custoMedioCarro += noAtual.conteudo->getCustoManutencao();
+        quantidadeCarro++;
+    }
+    else if(noAtual.conteudo->getTipo() == "Moto"){
+        custoMedioMoto += noAtual.conteudo->getCustoManutencao();
+        quantidadeMoto++;
+    }
+    else if(noAtual.conteudo->getTipo() == "Caminhao"){
+        custoMedioCaminhao += noAtual.conteudo->getCustoManutencao();
+        quantidadeCaminhao++;
+    }
+
+    // Realiza percursso
+    if (noAtual.pFilhoEsquerdo != NULL){
+        percussoPrefixoCustoManutencao(*(noAtual.pFilhoEsquerdo));
+    }
+    if (noAtual.pFilhoDireito != NULL){
+        percussoPrefixoCustoManutencao(*(noAtual.pFilhoDireito));
+    }
+}
+
+void Frota::ativarDebug(){
+    Veiculo* pVeiculo = new Carro("g","Fiat",4);
+    arvore = arvore + *pVeiculo;
+    (*pVeiculo)(100); // Coloca quilometragem do veiculo em 100km, calcula e atualiza o custo de manutenção.
+
+    pVeiculo = new Caminhao("m","Mercedes-Benz",15);
+    arvore = arvore + *pVeiculo;
+    (*pVeiculo)(100);
+
+    pVeiculo = new Moto("c","Toyota",500);
+    arvore = arvore + *pVeiculo;
+    (*pVeiculo)(100);
+    
+    pVeiculo = new Carro("i","Audi",6);
+    arvore = arvore + *pVeiculo;
+    (*pVeiculo)(100);
+
+    pVeiculo = new Caminhao("n","Chevrolet",5);
+    arvore = arvore + *pVeiculo;
+    (*pVeiculo)(100);
+
+    pVeiculo = new Moto("d","Honda",100);
+    arvore = arvore + *pVeiculo;
+    (*pVeiculo)(100);
+
+    std::cout << "Dados de depuracao criados!" << std::endl;
+}

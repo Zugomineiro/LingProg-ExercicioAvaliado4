@@ -1,7 +1,5 @@
 #include "Carro.h"
-Carro::Carro(std::string placa, std::string marca, size_t numeroPortas):Veiculo(placa,marca),numeroPortas(numeroPortas){
-    std::cout << numeroPortas << std::endl;
-}
+Carro::Carro(std::string placa, std::string marca, size_t numeroPortas):Veiculo(placa,marca),numeroPortas(numeroPortas){}
 
 void Carro::mostrarInformacoes(std::ostream& out) const{
     out << "tipo: Carro" << std::endl;
@@ -12,3 +10,5 @@ void Carro::mostrarInformacoes(std::ostream& out) const{
 double Carro::calcularCustoManutencao() const{
     return (static_cast<double>(numeroPortas)/4)*0.15*getQuilometragem();
 }
+
+std::string Carro::getTipo(){return "Carro";}

@@ -5,12 +5,19 @@
 #include "Excecoes.h"
 #include <iostream>
 
+/**
+ * 
+ * @brief Classe template de arvore binária que permite diversas operações
+ * 
+ */
 template <class T>
 class Arvore{
     public:
     ~Arvore(){
-
+        deletePercussoPosfixo(pNoRaiz);
+        delete pNoRaiz;; // Desaloca memoria do nó raíz
     }
+
     Arvore<T>& operator+(T& conteudo){ // Cria um nó copiando o conteúdo e adicona na árvore.
         No<T>* pNoNovo = new No<T>;
         pNoNovo->conteudo = &conteudo;
@@ -49,7 +56,19 @@ class Arvore{
             return;
         }
     }
-
+    void deletePercussoPosfixo(No<T>* pNoAtual){
+        if (pNoAtual->pFilhoEsquerdo != NULL){
+            deletePercussoPosfixo(pNoAtual->pFilhoEsquerdo);
+        }
+        if (pNoAtual->pFilhoDireito != NULL){
+            deletePercussoPosfixo(pNoAtual->pFilhoDireito);
+        }
+        // Deleta ponteiros dos filhos do nó atual para desalocar memória alocada dinamicamente
+        delete pNoAtual->pFilhoEsquerdo;
+        delete pNoAtual->pFilhoDireito;
+        // Deleta conteúdo porque assume que o conteúdo foi alocado dinamicamente de forma externa a esse código
+        delete pNoAtual->conteudo;
+    }
     
     void printPercussoPrefixo(No<T>* pNoAtual){ // Faz o print de todos os elementos da arvore usando percurso prefixo (print -> filho esquerdo -> filho direito)
         std::cout << *(pNoAtual->conteudo) << std::endl;
@@ -112,6 +131,9 @@ class Arvore{
         return ponteiroConteudo;
     }
 
+    No<T>& getNoRaiz(){return *pNoRaiz;}
+
+
     private:
         No<T>* pNoRaiz;
         size_t quantidadeNos = 0;
@@ -123,5 +145,6 @@ std::ostream& operator<<(std::ostream& out, Arvore<T>& arvore){
     arvore.mostrarInformacoes();
     return std::cout;
 };
+
 
 #endif

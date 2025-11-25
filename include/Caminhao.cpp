@@ -11,3 +11,5 @@ void Caminhao::mostrarInformacoes(std::ostream& out) const{
 double Caminhao::calcularCustoManutencao() const{
     return (capacidadeCarga/30+0.15)*getQuilometragem();
 }
+
+std::string Caminhao::getTipo(){return "Caminhao";}

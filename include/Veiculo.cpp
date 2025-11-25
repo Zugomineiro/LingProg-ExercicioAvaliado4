@@ -84,3 +84,9 @@ void Veiculo::operator()(double quilometragem){
     setQuilometragem(quilometragem);
     setCustoManutencao(calcularCustoManutencao());
 }
+
+std::string Veiculo::getTipo(){
+    return "nao definido";
+}
+
+Veiculo::~Veiculo(){} // Destrutor padrão
