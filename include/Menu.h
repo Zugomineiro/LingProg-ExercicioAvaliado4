@@ -21,10 +21,6 @@ class Menu{
         static const int larguraMenu = 51; // Largura do menu em caracteres
         bool usuarioSaiu = false; // Booleano que diz se o usuario quer sair
 
-
-        // Funcoes auxiliares
-        
-
         // Atributos de dados principais do programa
         Frota frota;
         

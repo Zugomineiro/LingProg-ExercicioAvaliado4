@@ -19,6 +19,9 @@ class Veiculo{
         bool operator>(Veiculo& veiculo);
         bool operator<(Veiculo& veiculo);
         bool operator==(Veiculo& veiculo);
+        bool operator>(std::string placa);
+        bool operator<(std::string placa);
+        bool operator==(std::string placa);
     private:
         std::string placa;
         std::string marca;
@@ -28,5 +31,6 @@ class Veiculo{
 };
 
 std::ostream& operator<<(std::ostream& out, Veiculo& veiculo);
+
 
 #endif

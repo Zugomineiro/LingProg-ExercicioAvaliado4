@@ -68,6 +68,15 @@ void Frota::inserirVeiculo(){
     }
 }
 
+void Frota::buscarVeiculo(){
+    std::string placaProcurada;
+    std::cout << "Digite a placa do veiculo desejado: ";
+    std::cin >> placaProcurada;
+    std::cout << std::endl;
+    Veiculo& veiculo = *(arvore(placaProcurada));
+    std::cout << "Veiculo encontrado:" << std::endl << std::endl<< veiculo;
+}
+
 void Frota::imprimirVeiculos(){
     std::cout << arvore << std::endl;
 }

@@ -22,6 +22,10 @@ void Menu::executaOpcao(){
             frota.imprimirVeiculos();
             break;
         }
+        else if(opcaoEscolhida == "3"){
+            frota.buscarVeiculo();
+            break;
+        }
         else if(opcaoEscolhida == "6"){
             usuarioSaiu = true;
             return;
@@ -42,6 +46,7 @@ void Menu::imprimirMenu(){
     std::cout << "________________ Escolha uma opcao ________________" << std::endl;
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "1 - Inserir veiculo" << "|"<< std::endl;
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "2 - Mostrar Veiculos" << "|"<< std::endl;
+    std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "3 - Buscar Veiculo" << "|"<< std::endl;
     std::cout << "|" << std::left << std::setw(larguraMenu - 2) << "6 - Sair" << "|"<< std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
 

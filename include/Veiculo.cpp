@@ -58,3 +58,24 @@ bool Veiculo::operator==(Veiculo& veiculo){
     }
     return false;
 }
+
+bool Veiculo::operator>(std::string placa){
+    if (this->placa > placa){
+        return true;
+    }
+    return false;
+}
+
+bool Veiculo::operator<(std::string placa){
+    if (this->placa < placa){
+        return true;
+    }
+    return false;
+}
+
+bool Veiculo::operator==(std::string placa){
+    if (this->placa == placa){
+        return true;
+    }
+    return false;
+}

@@ -11,6 +11,7 @@
 class Frota{
     public:
         void inserirVeiculo();
+        void buscarVeiculo();
         void imprimirVeiculos();
     private:
         Arvore<Veiculo> arvore;

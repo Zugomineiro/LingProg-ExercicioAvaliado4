@@ -2,6 +2,7 @@
 #define ARVORE_H
 
 #include "No.h"
+#include "Excecoes.h"
 #include <iostream>
 
 template <class T>
@@ -68,6 +69,35 @@ class Arvore{
         }
         std::cout << "Mostrando " << quantidadeNos << " itens:" << std::endl << std::endl;
         printPercussoPrefixo(pNoRaiz);
+    }
+
+    T* buscaBinaria(std::string& atributo,No<T>* noRaizAtual){
+        if (*(noRaizAtual->conteudo) < atributo){
+            if (noRaizAtual->pFilhoEsquerdo != NULL){
+                return buscaBinaria(atributo,noRaizAtual->pFilhoEsquerdo );
+            }
+            else{
+                // Se entrou aqui, quer dizer que não há próximo nó para percorrer e o veiculo não foi encontrado
+                throw VeiculoNaoEncontrado();
+            }
+        }
+        else if(*(noRaizAtual->conteudo) > atributo){
+            if (noRaizAtual->pFilhoDireito != NULL){
+                return buscaBinaria(atributo,noRaizAtual->pFilhoDireito);
+            }
+            else{
+                // Se entrou aqui, quer dizer que não há próximo nó para percorrer e o veiculo não foi encontrado
+                throw VeiculoNaoEncontrado();
+            }
+        }
+        else{
+            // Se entrou aqui quer dizer que o atributo foi encontrado em algum nó, retorna o ponteiro para o conteúdo do nó
+            return noRaizAtual->conteudo;
+        }
+    }
+    
+    T* operator()(std::string& atributo){
+        return buscaBinaria(atributo,pNoRaiz);
     }
 
     private:
